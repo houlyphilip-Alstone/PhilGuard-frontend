@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>API Docs | PhilGuard</title><link rel="stylesheet" href="assets/css/style.css"></head><body><header><a class="brand" href="index.html"><b>P</b> Phil<span>Guard</span></a><nav><a href="index.html">Home</a><a href="pricing.html">Pricing</a><a href="login.html">Log in</a></nav></header><main class="wrap docs"><label>DEVELOPER GUIDE</label><h1>PhilGuard API</h1><p>A starting point for integrating email protection into your application.</p><div class="notice">The route and payload below are illustrative placeholders. Confirm the real API contract with your backend before using them.</div><h2>Quick start</h2><ol><li>Create a project in your workspace.</li><li>Obtain API credentials from the backend.</li><li>Store secrets in server-side environment variables.</li><li>Send API requests from your server, not browser JavaScript.</li></ol><h2>Example server request</h2><p>Illustrative PHP cURL example. Replace host, endpoint and schema with the real backend details.</p><pre><code>&lt;?php
+$apiKey = getenv('PHILGUARD_API_KEY');
+$ch = curl_init('https://YOUR-API-HOST.example/v1/secure-email');
+curl_setopt_array($ch, [
+  CURLOPT_POST =&gt; true,
+  CURLOPT_RETURNTRANSFER =&gt; true,
+  CURLOPT_HTTPHEADER =&gt; [
+    'Content-Type: application/json',
+    'Authorization: Bearer ' . $apiKey
+  ],
+  CURLOPT_POSTFIELDS =&gt; json_encode(['email' =&gt; 'customer@example.com'])
+]);
+$response = curl_exec($ch);
+if ($response === false) throw new RuntimeException(curl_error($ch));
+curl_close($ch);
+echo $response;</code></pre><h2>Security notes</h2><ul><li>Never place private API keys in frontend code.</li><li>Use HTTPS for production API communication.</li><li>Authorize and validate requests on the server.</li><li>Verify payment callbacks server-side.</li><li>Obtain independent security and compliance reviews.</li></ul></main><footer>© 2026 PhilGuard</footer><script src="assets/js/app.js"></script></body></html>
